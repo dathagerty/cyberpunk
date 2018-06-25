@@ -7,7 +7,7 @@ Map::Map(int width, int height) : width(width), height(height) {
 	setWall(50, 22);
 }
 
-bool Map::isWall(int x, int y) {
+bool Map::isWall(int x, int y) const {
 	return !tiles[x+y*width].canWalk;
 }
 
