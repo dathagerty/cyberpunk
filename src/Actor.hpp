@@ -1,5 +1,4 @@
-class Actor
-{
+class Actor {
 public:
 	int x, y; // x and y position on the map
 	int character; // ascii character code
