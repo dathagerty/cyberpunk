@@ -42,7 +42,7 @@ void Engine::update() {
 void Engine::render() {
 	TCODConsole::root->clear();
 	map->render();
-	for (Actor **iterator = actors.begin(); iterator != actors.end(); iterator++;) {
+	for (Actor **iterator = actors.begin(); iterator != actors.end(); iterator++) {
 		(*iterator)->render();
 	}
 }
