@@ -3,7 +3,7 @@
 #include "Actor.hpp"
 #include "Engine.hpp"
 
-static const int ROOM_MAX_SIZE = 12;
+static const int ROOM_MAX_SIZE = 10;
 static const int ROOM_MIN_SIZE = 6;
 
 class BspListener : public ITCODBspCallback {
@@ -25,7 +25,7 @@ public:
 			y = rng->getInt(node->y + 1, node->y + node->h - h - 1);
 			map.createRoom(roomNum == 0, x, y, x + w - 1, y + h - 1);
 			if (roomNum != 0) {
-				map.dig(lastX, lastY, x + w/2, y + h/2);
+				map.dig(lastX, lastY, x + w/2, lastY);
 				map.dig(x + w/2, lastY, x + w/2, y + h/2);
 			}
 			lastX = x + w/2;
