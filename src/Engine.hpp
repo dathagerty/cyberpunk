@@ -1,6 +1,14 @@
 class Engine
 {
-  public:
+public:
+	enum GameStatus
+	{
+		STARTUP,
+		IDLE,
+		NEW_TURN,
+		VICTORY,
+		DEFEAT
+	} gameStatus;
 	TCODList<Actor *> actors;
 	Actor *player;
 	Map *map;
@@ -10,9 +18,6 @@ class Engine
 	void update();
 	void render();
 	~Engine();
-
-  private:
-	bool computeFOV;
 };
 
 extern Engine engine;

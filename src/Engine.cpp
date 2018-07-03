@@ -3,10 +3,10 @@
 #include "Map.hpp"
 #include "Engine.hpp"
 
-Engine::Engine() : fovRadius(10), computeFOV(true)
+Engine::Engine() : gameStatus(STARTUP), fovRadius(10)
 {
 	TCODConsole::initRoot(80, 50, "Cyberpunk Roguelike", false);
-	player = new Actor(40, 25, '@', TCODColor::white);
+	player = new Actor(40, 25, '@', "player", TCODColor::white);
 	actors.push(player);
 	map = new Map(80, 45);
 }
@@ -14,44 +14,54 @@ Engine::Engine() : fovRadius(10), computeFOV(true)
 void Engine::update()
 {
 	TCOD_key_t key;
+	if (gameStatus == STARTUP)
+		map->computeFOV();
+	gameStatus = IDLE;
 	TCODSystem::checkForEvent(TCOD_EVENT_KEY_PRESS, &key, NULL);
+	int dx = 0;
+	int dy = 0;
 	switch (key.vk)
 	{
 	case TCODK_UP:
-		if (!map->isWall(player->x, player->y - 1))
-		{
-			player->y--;
-			computeFOV = true;
-		}
+		dy = -1;
 		break;
 	case TCODK_DOWN:
-		if (!map->isWall(player->x, player->y + 1))
-		{
-			player->y++;
-			computeFOV = true;
-		}
+		dy = 1;
 		break;
 	case TCODK_LEFT:
-		if (!map->isWall(player->x - 1, player->y))
-		{
-			player->x--;
-			computeFOV = true;
-		}
+		dx = -1;
 		break;
 	case TCODK_RIGHT:
-		if (!map->isWall(player->x + 1, player->y))
-		{
-			player->x++;
-			computeFOV = true;
-		}
+		dx = 1;
 		break;
 	default:
 		break;
 	}
-	if (computeFOV)
+
+	if (dx != 0 || dy != 0)
 	{
-		map->computeFOV();
-		computeFOV = false;
+		gameStatus = NEW_TURN;
+
+		if (player->moveOrAttack(player->x + dx, player->y + dy))
+		{
+			map->computeFOV();
+		}
+	}
+
+	if (gameStatus == NEW_TURN)
+	{
+		for (Actor **iterator = actors.begin(); iterator != actors.end(); iterator++)
+		{
+			Actor *actor = *iterator;
+
+			if (actor != player)
+			{
+				if (map->isInFOV(actor->x, actor->y))
+				{
+					actor->update();
+				}
+			}
+		}
 	}
 }
 
