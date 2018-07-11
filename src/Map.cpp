@@ -1,7 +1,4 @@
-#include "libtcod.hpp"
-#include "Map.hpp"
-#include "Actor.hpp"
-#include "Engine.hpp"
+#include "main.hpp"
 
 static const int ROOM_MAX_SIZE = 12;
 static const int ROOM_MIN_SIZE = 6;

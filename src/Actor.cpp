@@ -1,8 +1,5 @@
 #include <stdio.h>
-#include "libtcod.hpp"
-#include "Actor.hpp"
-#include "Map.hpp"
-#include "Engine.hpp"
+#include "main.hpp"
 
 Actor::Actor(int x, int y, int character, const char *name, const TCODColor &color) : x(x), y(y), character(character), name(name), color(color)
 {
