@@ -12,4 +12,6 @@ This project depends on libtcod. Headers are included in this repository, but th
 
 ## Compiling
 
-To compile, invoke your compiler of choice on a command line and inform it of the location of source files, includes, libraries, and set a name for the executable output. On my Mac, this command looks like: `g++ src/*.cpp -o cyberpunk -Iinclude -L. -ltcod -ltcodxx -Wall`.
+To compile, run `make clean release` from the project root to build a release version.
+
+Run `make clean debug` to build a debug version.
