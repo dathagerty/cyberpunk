@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdarg.h>
-#include "main.cpp"
+#include "main.hpp"
 
 static const int PANEL_HEIGHT = 7;
 static const int BAR_WIDTH = 20;
