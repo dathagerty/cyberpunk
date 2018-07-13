@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <math.h>
 #include "main.hpp"
 
@@ -58,7 +57,7 @@ bool PlayerAi::moveOrAttack(Actor *owner, int targetX, int targetY)
     Actor *actor = *iterator;
     if (actor->destructible->isDead() && actor->x == targetX && actor->y == targetY)
     {
-      printf("There's a %s here\n", actor->name);
+      engine.gui->message(TCODColor::lightGrey, "There's a %s here", actor->name);
     }
   }
   owner->x = targetX;

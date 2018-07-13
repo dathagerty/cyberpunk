@@ -8,7 +8,9 @@ Engine::Engine(int screenWidth, int screenHeight) : gameStatus(STARTUP), fovRadi
   player->attacker = new Attacker(5);
   player->ai = new PlayerAi();
   actors.push(player);
-  map = new Map(80, 45);
+  map = new Map(80, 43);
+  gui = new Gui();
+  //gui->message(TCODColor::turquoise, "Initializing system...\nSystem started. Enjoy death.");
 }
 
 void Engine::sendToBack(Actor *actor)
@@ -22,7 +24,7 @@ void Engine::update()
   if (gameStatus == STARTUP)
     map->computeFOV();
   gameStatus = IDLE;
-  TCODSystem::checkForEvent(TCOD_EVENT_KEY_PRESS, &lastKey, NULL);
+  TCODSystem::checkForEvent(TCOD_EVENT_KEY_PRESS | TCOD_EVENT_MOUSE, &lastKey, &mouse);
   player->update();
   if (gameStatus == NEW_TURN)
   {
@@ -50,11 +52,12 @@ void Engine::render()
     }
   }
   player->render();
-  TCODConsole::root->print(1, screenHeight - 2, "HP : %d/%d", (int)player->destructible->currentHealth, (int)player->destructible->maxHealth);
+  gui->render();
 }
 
 Engine::~Engine()
 {
   actors.clearAndDelete();
   delete map;
+  delete gui;
 }

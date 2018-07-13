@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include "main.hpp"
 
 Destructible::Destructible(float maxHealth, float defense, const char *corpseName) : maxHealth(maxHealth), currentHealth(maxHealth), defense(defense), corpseName(corpseName) {}
@@ -40,13 +39,13 @@ PlayerDestructible::PlayerDestructible(float maxHealth, float defense, const cha
 
 void MonsterDestructible::die(Actor *owner)
 {
-  printf("%s is dead\n", owner->name);
+  engine.gui->message(TCODColor::lightGrey, "%s is dead", owner->name);
   Destructible::die(owner);
 }
 
 void PlayerDestructible::die(Actor *owner)
 {
-  printf("You died!\n");
+  engine.gui->message(TCODColor::red, "You died!");
   Destructible::die(owner);
   engine.gameStatus = Engine::DEFEAT;
 }
