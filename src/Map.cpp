@@ -3,6 +3,7 @@
 static const int ROOM_MAX_SIZE = 12;
 static const int ROOM_MIN_SIZE = 6;
 static const int MAX_ENEMIES_IN_ROOM = 3;
+static const int MAX_ITEMS_IN_ROOM = 2;
 
 class BspListener : public ITCODBspCallback
 {
@@ -116,6 +117,14 @@ void Map::addMonster(int x, int y)
   }
 }
 
+void Map::addItem(int x, int y)
+{
+  Actor *medpack = new Actor(x, y, '!', "medpack", TCODColor::violet);
+  medpack->blocks = false;
+  medpack->pickable = new Healer(4);
+  engine.actors.push(medpack);
+}
+
 void Map::dig(int x1, int y1, int x2, int y2)
 {
   if (x2 < x1)
@@ -153,6 +162,7 @@ void Map::createRoom(bool first, int x1, int y1, int x2, int y2)
   {
     TCODRandom *rng = TCODRandom::getInstance();
     int numberOfMonsters = rng->getInt(0, MAX_ENEMIES_IN_ROOM);
+    int numberOfItems = rng->getInt(0, MAX_ITEMS_IN_ROOM);
 
     while (numberOfMonsters > 0)
     {
@@ -163,6 +173,17 @@ void Map::createRoom(bool first, int x1, int y1, int x2, int y2)
         addMonster(x, y);
       }
       numberOfMonsters--;
+    }
+
+    while (numberOfItems > 0)
+    {
+      int x = rng->getInt(x1, x2);
+      int y = rng->getInt(y1, y2);
+      if (canWalk(x, y))
+      {
+        addItem(x, y);
+      }
+      numberOfItems--;
     }
   }
 }

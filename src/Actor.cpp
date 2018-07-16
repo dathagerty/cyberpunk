@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "main.hpp"
 
-Actor::Actor(int x, int y, int character, const char *name, const TCODColor &color) : x(x), y(y), character(character), name(name), color(color), blocks(true), attacker(nullptr), destructible(nullptr), ai(nullptr)
+Actor::Actor(int x, int y, int character, const char *name, const TCODColor &color) : x(x), y(y), character(character), name(name), color(color), blocks(true), attacker(nullptr), destructible(nullptr), ai(nullptr), pickable(nullptr), container(nullptr)
 {
 }
 
@@ -37,4 +37,18 @@ void Actor::render() const
 {
   TCODConsole::root->setChar(x, y, character);
   TCODConsole::root->setCharForeground(x, y, color);
+}
+
+Actor::~Actor()
+{
+  if (attacker)
+    delete attacker;
+  if (destructible)
+    delete destructible;
+  if (ai)
+    delete ai;
+  if (pickable)
+    delete pickable;
+  if (container)
+    delete container;
 }

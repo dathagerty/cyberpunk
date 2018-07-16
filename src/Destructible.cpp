@@ -20,6 +20,17 @@ float Destructible::takeDamage(Actor *owner, float damage)
   return damage;
 }
 
+float Destructible::heal(float amount)
+{
+  currentHealth += amount;
+  if (currentHealth > maxHealth)
+  {
+    amount -= currentHealth - maxHealth;
+    currentHealth = maxHealth;
+  }
+  return amount;
+}
+
 void Destructible::die(Actor *owner)
 {
   owner->character = '%';

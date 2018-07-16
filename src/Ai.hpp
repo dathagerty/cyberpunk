@@ -10,7 +10,9 @@ public:
   void update(Actor *owner);
 
 protected:
+  void handleActionKey(Actor *owner, int keyCode);
   bool moveOrAttack(Actor *owner, int targetX, int targetY);
+  Actor *chooseFromInventory(Actor *owner);
 };
 
 class MonsterAi : public Ai

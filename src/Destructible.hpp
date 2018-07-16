@@ -1,4 +1,3 @@
-
 class Destructible
 {
 public:
@@ -10,6 +9,7 @@ public:
   Destructible(float maxHealth, float defense, const char *corpseName);
   inline bool isDead() { return currentHealth <= 0; }
   float takeDamage(Actor *owner, float damage);
+  float heal(float amount);
   virtual void die(Actor *owner);
 };
 

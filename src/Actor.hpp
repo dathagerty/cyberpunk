@@ -9,9 +9,12 @@ public:
   Attacker *attacker;         // damage source
   Destructible *destructible; // damage receiver
   Ai *ai;                     // handles updates for actors
+  Pickable *pickable;         // an actor that can be picked up or used
+  Container *container;       // a container for actors
 
   Actor(int x, int y, int character, const char *name, const TCODColor &color);
   bool moveOrAttack(int x, int y);
   void update();
   void render() const;
+  ~Actor();
 };
