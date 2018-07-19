@@ -111,6 +111,16 @@ void PlayerAi::handleActionKey(Actor *owner, int keyCode)
     }
   }
   break;
+  case 'd':
+  {
+    Actor *actor = chooseFromInventory(owner);
+    if (actor)
+    {
+      actor->pickable->drop(actor, owner);
+      engine.gameStatus = Engine::NEW_TURN;
+    }
+  }
+  break;
   }
 }
 
@@ -196,5 +206,39 @@ void MonsterAi::moveOrAttack(Actor *owner, int targetX, int targetY)
   else if (owner->attacker)
   {
     owner->attacker->attack(owner, engine.player);
+  }
+}
+
+ConfusedAi::ConfusedAi(int numberOfTurns, Ai *oldAi) : numberOfTurns(numberOfTurns), oldAi(oldAi) {}
+
+void ConfusedAi::update(Actor *owner)
+{
+  TCODRandom *rng = TCODRandom::getInstance();
+  int dx = rng->getInt(-1, 1);
+  int dy = rng->getInt(-1, 1);
+
+  if (dx != 0 || dy != 0)
+  {
+    int destX = owner->x + dx;
+    int destY = owner->y + dy;
+    if (engine.map->canWalk(destX, destY))
+    {
+      owner->x = destX;
+      owner->y = destY;
+    }
+    else
+    {
+      Actor *actor = engine.getActor(destX, destY);
+      if (actor)
+      {
+        owner->attacker->attack(owner, actor);
+      }
+    }
+  }
+  numberOfTurns--;
+  if (numberOfTurns == 0)
+  {
+    owner->ai = oldAi;
+    delete this;
   }
 }

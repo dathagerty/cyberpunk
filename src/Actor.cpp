@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 #include "main.hpp"
 
 Actor::Actor(int x, int y, int character, const char *name, const TCODColor &color) : x(x), y(y), character(character), name(name), color(color), blocks(true), attacker(nullptr), destructible(nullptr), ai(nullptr), pickable(nullptr), container(nullptr)
@@ -25,6 +26,13 @@ bool Actor::moveOrAttack(int x, int y)
   this->x = x;
   this->y = y;
   return true;
+}
+
+float Actor::getDistance(int destX, int destY) const
+{
+  int dx = x - destX;
+  int dy = y - destY;
+  return sqrtf(dx * dx + dy * dy);
 }
 
 void Actor::update()

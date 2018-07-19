@@ -119,10 +119,36 @@ void Map::addMonster(int x, int y)
 
 void Map::addItem(int x, int y)
 {
-  Actor *medpack = new Actor(x, y, '!', "medpack", TCODColor::violet);
-  medpack->blocks = false;
-  medpack->pickable = new Healer(4);
-  engine.actors.push(medpack);
+  TCODRandom *rng = TCODRandom::getInstance();
+  int dieRoll = rng->getInt(0, 100);
+  if (dieRoll < 70)
+  {
+    Actor *medpack = new Actor(x, y, '!', "medpack", TCODColor::violet);
+    medpack->blocks = false;
+    medpack->pickable = new Healer(4);
+    engine.actors.push(medpack);
+  }
+  else if (dieRoll < 80)
+  {
+    Actor *targetedEmp = new Actor(x, y, '%', "Targeted EMP", TCODColor::lighterBlue);
+    targetedEmp->blocks = false;
+    targetedEmp->pickable = new TargetedEmp(5, 20);
+    engine.actors.push(targetedEmp);
+  }
+  else if (dieRoll < 90)
+  {
+    Actor *fragGrenade = new Actor(x, y, '%', "Frag Grenade", TCODColor::lighterBlue);
+    fragGrenade->blocks = false;
+    fragGrenade->pickable = new FragGrenade(3, 12);
+    engine.actors.push(fragGrenade);
+  }
+  else
+  {
+    Actor *tearGas = new Actor(x, y, '%', "Tear Gas", TCODColor::lighterBlue);
+    tearGas->blocks = false;
+    tearGas->pickable = new TearGas(10, 8);
+    engine.actors.push(tearGas);
+  }
 }
 
 void Map::dig(int x1, int y1, int x2, int y2)

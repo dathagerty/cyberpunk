@@ -14,6 +14,7 @@ public:
 
   Actor(int x, int y, int character, const char *name, const TCODColor &color);
   bool moveOrAttack(int x, int y);
+  float getDistance(int destX, int destY) const;
   void update();
   void render() const;
   ~Actor();

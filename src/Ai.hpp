@@ -25,3 +25,14 @@ protected:
 
   void moveOrAttack(Actor *owner, int targetX, int targetY);
 };
+
+class ConfusedAi : public Ai
+{
+public:
+  ConfusedAi(int numberOfTurns, Ai *oldAi);
+  void update(Actor *owner);
+
+protected:
+  int numberOfTurns;
+  Ai *oldAi;
+};
