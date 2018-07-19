@@ -62,7 +62,7 @@ bool TargetedEmp::use(Actor *owner, Actor *wearer)
         engine.gui->message(TCODColor::lightGrey, "No enemy is in range.");
         return false;
     }
-    engine.gui->message(TCODColor::lightBlue, "The %s is hit by a targeted EMP blast!\nThe blast does %g damage.", closestMonster->name, damage);
+    engine.gui->message(TCODColor::lightBlue, "The %s is hit by a targeted EMP blast for %g damage!", closestMonster->name, damage);
     closestMonster->destructible->takeDamage(closestMonster, damage);
     return Pickable::use(owner, wearer);
 }
