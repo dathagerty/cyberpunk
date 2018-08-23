@@ -12,13 +12,16 @@ endif
 # linker options for different operating systems
 # Linux/BSD
 ifeq ($(shell sh -c 'uname -s'),Linux)
-	LIBFLAGS=-L. -ltcod -ltcodxx -Wl,-rpath=.
+	LIBFLAGS=-Llib -ltcod -ltcodxx -Wl,-rpath=.
+	COMPILER=g++
 # macOS
 else ifeq ($(shell sh -c 'uname -s'),Darwin)
-	LIBFLAGS=-L. -ltcod -ltcodxx
+	LIBFLAGS=-Llib -ltcod -ltcodxx
+	COMPILER=clang++
 # Windows
 else
 	LIBFLAGS=-Llib -ltcod-mingw-debug -static-libgcc -static-libstdc++ -mwindows
+	COMPILER=g++
 endif
 
 ## debug     : build with debugging information
@@ -29,19 +32,20 @@ release : cyberpunk
 
 # intermediate target
 cyberpunk : $(OBJS)
-	g++ $(OBJS) -o cyberpunk -Wall $(LIBFLAGS) $(CFLAGS)
+	$(COMPILER) $(OBJS) -o cyberpunk -Wall $(LIBFLAGS) $(CFLAGS)
 
 # intermediate target
 src/main.hpp.gch : src/*.hpp
-	g++ src/main.hpp -Iinclude -Wall
+	$(COMPILER) src/main.hpp -Iinclude -Wall
 
 # intermediate target
-src/%.o : src/%.cpp src/main.hpp.gch
-	g++ $< -c -o $@ -Iinclude -Wall $(CFLAGS)
+src/%.o : src/%.cpp src/main.hpp.pch
+	$(COMPILER) $< -c -o $@ -Iinclude -Wall $(CFLAGS)
 
 ## clean     : clean auto-generated files
 clean :
-	rm -f src/main.hpp.gch $(OBJS)
+	rm -f src/main.hpp.pch $(OBJS)
 
+## help      : print this help text
 help : makefile
 	@sed -n 's/^##//p' $<

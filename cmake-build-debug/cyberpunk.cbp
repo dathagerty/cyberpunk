@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="cyberpunk"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/david/code/personal/cyberpunk/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/david/code/personal/cyberpunk/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/david/code/personal/cyberpunk/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/david/code/personal/cyberpunk/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/david/code/personal/cyberpunk/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/david/code/personal/cyberpunk/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/david/code/personal/cyberpunk/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/david/code/personal/cyberpunk/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/david/code/personal/cyberpunk/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/david/code/personal/cyberpunk/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/david/code/personal/cyberpunk/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/david/code/personal/cyberpunk/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/david/code/personal/cyberpunk/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/david/code/personal/cyberpunk/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/david/code/personal/cyberpunk/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="cyberpunk">
+				<Option output="/Users/david/code/personal/cyberpunk/cmake-build-debug/cyberpunk.app/Contents/MacOS/cyberpunk" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/david/code/personal/cyberpunk/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="0"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/david/code/personal/cyberpunk/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/david/code/personal/cyberpunk/cmake-build-debug/Makefile&quot;  VERBOSE=1 cyberpunk"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/david/code/personal/cyberpunk/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/david/code/personal/cyberpunk/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/david/code/personal/cyberpunk/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="cyberpunk/fast">
+				<Option output="/Users/david/code/personal/cyberpunk/cmake-build-debug/cyberpunk.app/Contents/MacOS/cyberpunk" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/david/code/personal/cyberpunk/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="0"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/david/code/personal/cyberpunk/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.1.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/david/code/personal/cyberpunk/cmake-build-debug/Makefile&quot;  VERBOSE=1 cyberpunk/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/david/code/personal/cyberpunk/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/david/code/personal/cyberpunk/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/david/code/personal/cyberpunk/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/david/code/personal/cyberpunk/src/Actor.cpp">
+			<Option target="cyberpunk"/>
+		</Unit>
+		<Unit filename="/Users/david/code/personal/cyberpunk/src/Actor.hpp">
+			<Option target="cyberpunk"/>
+		</Unit>
+		<Unit filename="/Users/david/code/personal/cyberpunk/src/Ai.cpp">
+			<Option target="cyberpunk"/>
+		</Unit>
+		<Unit filename="/Users/david/code/personal/cyberpunk/src/Ai.hpp">
+			<Option target="cyberpunk"/>
+		</Unit>
+		<Unit filename="/Users/david/code/personal/cyberpunk/src/Attacker.cpp">
+			<Option target="cyberpunk"/>
+		</Unit>
+		<Unit filename="/Users/david/code/personal/cyberpunk/src/Attacker.hpp">
+			<Option target="cyberpunk"/>
+		</Unit>
+		<Unit filename="/Users/david/code/personal/cyberpunk/src/Container.cpp">
+			<Option target="cyberpunk"/>
+		</Unit>
+		<Unit filename="/Users/david/code/personal/cyberpunk/src/Container.hpp">
+			<Option target="cyberpunk"/>
+		</Unit>
+		<Unit filename="/Users/david/code/personal/cyberpunk/src/Destructible.cpp">
+			<Option target="cyberpunk"/>
+		</Unit>
+		<Unit filename="/Users/david/code/personal/cyberpunk/src/Destructible.hpp">
+			<Option target="cyberpunk"/>
+		</Unit>
+		<Unit filename="/Users/david/code/personal/cyberpunk/src/Engine.cpp">
+			<Option target="cyberpunk"/>
+		</Unit>
+		<Unit filename="/Users/david/code/personal/cyberpunk/src/Engine.hpp">
+			<Option target="cyberpunk"/>
+		</Unit>
+		<Unit filename="/Users/david/code/personal/cyberpunk/src/Gui.cpp">
+			<Option target="cyberpunk"/>
+		</Unit>
+		<Unit filename="/Users/david/code/personal/cyberpunk/src/Gui.hpp">
+			<Option target="cyberpunk"/>
+		</Unit>
+		<Unit filename="/Users/david/code/personal/cyberpunk/src/Map.cpp">
+			<Option target="cyberpunk"/>
+		</Unit>
+		<Unit filename="/Users/david/code/personal/cyberpunk/src/Map.hpp">
+			<Option target="cyberpunk"/>
+		</Unit>
+		<Unit filename="/Users/david/code/personal/cyberpunk/src/Pickable.cpp">
+			<Option target="cyberpunk"/>
+		</Unit>
+		<Unit filename="/Users/david/code/personal/cyberpunk/src/Pickable.hpp">
+			<Option target="cyberpunk"/>
+		</Unit>
+		<Unit filename="/Users/david/code/personal/cyberpunk/src/main.cpp">
+			<Option target="cyberpunk"/>
+		</Unit>
+		<Unit filename="/Users/david/code/personal/cyberpunk/src/main.hpp">
+			<Option target="cyberpunk"/>
+		</Unit>
+		<Unit filename="/Users/david/code/personal/cyberpunk/terminal.png">
+			<Option target="cyberpunk"/>
+		</Unit>
+		<Unit filename="/Users/david/code/personal/cyberpunk/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
