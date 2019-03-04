@@ -19,7 +19,7 @@ bool Actor::moveOrAttack(int x, int y)
     Actor *actor = *iterator;
     if (actor->x == x && actor->y == y)
     {
-      printf("The %s laughs at your puny efforts to attack him!\n", actor->name);
+//      printf("The %s laughs at your puny efforts to attack him!\n", actor->name);
       return false;
     }
   }

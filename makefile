@@ -35,7 +35,7 @@ cyberpunk : $(OBJS)
 	$(COMPILER) $(OBJS) -o cyberpunk -Wall $(LIBFLAGS) $(CFLAGS)
 
 # intermediate target
-src/main.hpp.gch : src/*.hpp
+src/main.hpp.pch : src/*.hpp
 	$(COMPILER) src/main.hpp -Iinclude -Wall
 
 # intermediate target

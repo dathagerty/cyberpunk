@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <stdarg.h>
+#include <cstdarg>
 #include "main.hpp"
 
 static const int PANEL_HEIGHT = 7;
@@ -44,7 +43,7 @@ void Gui::renderBar(int x, int y, int width, const char *name, float value, floa
 {
   screen->setDefaultBackground(backColor);
   screen->rect(x, y, width, 1, false, TCOD_BKGND_SET);
-  int barWidth = (int)(value / maxValue * width);
+  auto barWidth = (int)(value / maxValue * width);
   if (barWidth > 0)
   {
     screen->setDefaultBackground(barColor);
@@ -76,7 +75,7 @@ void Gui::message(const TCODColor &color, const char *text, ...)
     {
       *lineEnd = '\0';
     }
-    Message *msg = new Message(lineBegin, color);
+    auto *msg = new Message(lineBegin, color);
     log.push(msg);
     lineBegin = lineEnd + 1;
   } while (lineEnd);

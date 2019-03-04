@@ -1,7 +1,7 @@
 #include "main.hpp"
 
-Engine::Engine(int screenWidth, int screenHeight) : gameStatus(STARTUP), fovRadius(10), screenWidth(screenWidth), screenHeight(screenHeight)
-{
+Engine::Engine(int screenWidth, int screenHeight) : gameStatus(STARTUP), fovRadius(10), screenWidth(screenWidth), screenHeight(screenHeight),
+                                                    lastKey(), mouse() {
   TCODConsole::initRoot(screenWidth, screenHeight, "Cyberpunk Roguelike", false);
   player = new Actor(40, 25, '@', "player", TCODColor::white);
   player->destructible = new PlayerDestructible(30, 2, "your cadaver");
@@ -70,7 +70,7 @@ bool Engine::pickATile(int *x, int *y, float maxRange)
         return true;
       }
     }
-    if (mouse.rbutton_pressed) // || lastKey.vk != TCODK_NONE
+    if (mouse.rbutton_pressed)
     {
       return false;
     }
@@ -116,6 +116,7 @@ void Engine::render()
 {
   TCODConsole::root->clear();
   map->render();
+
   for (Actor **iterator = actors.begin(); iterator != actors.end(); iterator++)
   {
     Actor *actor = *iterator;

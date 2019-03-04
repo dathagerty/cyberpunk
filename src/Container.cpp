@@ -2,10 +2,7 @@
 
 Container::Container(int size) : size(size) {}
 
-Container::~Container()
-{
-    inventory.clearAndDelete();
-}
+Container::~Container() = default;
 
 bool Container::add(Actor *item)
 {

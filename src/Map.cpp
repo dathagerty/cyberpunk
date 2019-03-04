@@ -13,7 +13,7 @@ private:
   int lastX, lastY;
 
 public:
-  BspListener(Map &map) : map(map), roomNum(0) {}
+    explicit BspListener(Map &map) : map(map), roomNum(0), lastX(), lastY() {}
 
   bool visitNode(TCODBsp *node, void *userData)
   {
@@ -44,9 +44,9 @@ Map::Map(int width, int height) : width(width), height(height)
   tiles = new Tile[width * height];
   map = new TCODMap(width, height);
   TCODBsp bsp(0, 0, width, height);
-  bsp.splitRecursive(NULL, 8, ROOM_MAX_SIZE, ROOM_MAX_SIZE, 1.5f, 1.5f);
+  bsp.splitRecursive(nullptr, 8, ROOM_MAX_SIZE, ROOM_MAX_SIZE, 1.5f, 1.5f);
   BspListener listener(*this);
-  bsp.traverseInvertedLevelOrder(&listener, NULL);
+  bsp.traverseInvertedLevelOrder(&listener, nullptr);
 }
 
 bool Map::isWall(int x, int y) const
@@ -101,7 +101,7 @@ void Map::addMonster(int x, int y)
 
   if (rng->getInt(0, 100) < 80)
   {
-    Actor *runner = new Actor(x, y, 'r', "runner", TCODColor::desaturatedGreen);
+    auto *runner = new Actor(x, y, 'r', "runner", TCODColor::desaturatedGreen);
     runner->destructible = new MonsterDestructible(10, 0, "dead runner");
     runner->attacker = new Attacker(3);
     runner->ai = new MonsterAi();
@@ -109,7 +109,7 @@ void Map::addMonster(int x, int y)
   }
   else
   {
-    Actor *bot = new Actor(x, y, 'S', "security bot", TCODColor::darkerGreen);
+    auto *bot = new Actor(x, y, 'S', "security bot", TCODColor::darkerGreen);
     bot->destructible = new MonsterDestructible(16, 1, "robot scraps");
     bot->attacker = new Attacker(4);
     bot->ai = new MonsterAi();
@@ -123,28 +123,28 @@ void Map::addItem(int x, int y)
   int dieRoll = rng->getInt(0, 100);
   if (dieRoll < 70)
   {
-    Actor *medpack = new Actor(x, y, '!', "medpack", TCODColor::violet);
+    auto *medpack = new Actor(x, y, '!', "medpack", TCODColor::violet);
     medpack->blocks = false;
     medpack->pickable = new Healer(4);
     engine.actors.push(medpack);
   }
   else if (dieRoll < 80)
   {
-    Actor *targetedEmp = new Actor(x, y, '%', "Targeted EMP", TCODColor::lighterBlue);
+    auto *targetedEmp = new Actor(x, y, '%', "Targeted EMP", TCODColor::lighterBlue);
     targetedEmp->blocks = false;
     targetedEmp->pickable = new TargetedEmp(5, 20);
     engine.actors.push(targetedEmp);
   }
   else if (dieRoll < 90)
   {
-    Actor *fragGrenade = new Actor(x, y, '%', "Frag Grenade", TCODColor::lighterBlue);
+    auto *fragGrenade = new Actor(x, y, '%', "Frag Grenade", TCODColor::lighterBlue);
     fragGrenade->blocks = false;
     fragGrenade->pickable = new FragGrenade(3, 12);
     engine.actors.push(fragGrenade);
   }
   else
   {
-    Actor *tearGas = new Actor(x, y, '%', "Tear Gas", TCODColor::lighterBlue);
+    auto *tearGas = new Actor(x, y, '%', "Tear Gas", TCODColor::lighterBlue);
     tearGas->blocks = false;
     tearGas->pickable = new TearGas(10, 8);
     engine.actors.push(tearGas);

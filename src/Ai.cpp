@@ -1,4 +1,4 @@
-#include <math.h>
+#include <cmath>
 #include "main.hpp"
 
 static const int TRACKING_TURNS = 3;
@@ -145,7 +145,7 @@ Actor *PlayerAi::chooseFromInventory(Actor *owner)
   TCODConsole::blit(&console, 0, 0, INVENTORY_WIDTH, INVENTORY_HEIGHT, TCODConsole::root, engine.screenWidth / 2 - INVENTORY_WIDTH / 2, engine.screenHeight / 2 - INVENTORY_HEIGHT / 2);
   TCODConsole::flush();
 
-  TCOD_key_t key;
+  TCOD_key_t key = {};
   TCODSystem::waitForEvent(TCOD_EVENT_KEY_PRESS, &key, nullptr, true);
   if (key.vk == TCODK_CHAR)
   {
@@ -182,9 +182,9 @@ void MonsterAi::moveOrAttack(Actor *owner, int targetX, int targetY)
 {
   int dx = targetX - owner->x;
   int dy = targetY - owner->y;
-  int stepdx = (dx > 0 ? 1 : -1);
-  int stepdy = (dx > 0 ? 1 : -1);
-  float distance = sqrtf(dx * dx + dy * dy);
+  int dxStep = (dx > 0 ? 1 : -1);
+  int dyStep = (dx > 0 ? 1 : -1);
+  float distance = static_cast<float>(sqrt(dx * dx + dy * dy));
   if (distance >= 2)
   {
     dx = (int)(round(dx / distance));
@@ -195,13 +195,13 @@ void MonsterAi::moveOrAttack(Actor *owner, int targetX, int targetY)
     owner->x += dx;
     owner->y += dy;
   }
-  else if (engine.map->canWalk(owner->x + stepdx, owner->y))
+  else if (engine.map->canWalk(owner->x + dxStep, owner->y))
   {
-    owner->x += stepdx;
+    owner->x += dxStep;
   }
-  else if (engine.map->canWalk(owner->x, owner->y + stepdy))
+  else if (engine.map->canWalk(owner->x, owner->y + dyStep))
   {
-    owner->y += stepdy;
+    owner->y += dyStep;
   }
   else if (owner->attacker)
   {
